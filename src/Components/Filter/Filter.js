@@ -18,5 +18,4 @@ const Filter = ({value, onChangeFilter}) =>{
     )
 }
 
-
 export default Filter;
