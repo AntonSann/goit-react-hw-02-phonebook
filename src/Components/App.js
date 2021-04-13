@@ -16,9 +16,10 @@ class App extends Component {
   }
 
 formSubmitHandler = (data) =>{
+  const normalizedName = data.name.toLowerCase();
   const sameName = this.state.contacts
-  .map((contact) => contact.name)
-  .includes(data.name);
+  .map((contact) => contact.name.toLowerCase())
+  .includes(normalizedName);
 
 if (sameName) {
   alert(`${data.name} is already in contacts`);
@@ -44,7 +45,8 @@ this.setState({filter: event.currentTarget.value});
 }
 
   render (){
-
+/* переменная normalizedFilter необходима, чтоб не приводить 
+содержимое свойства filter в нижний регистр каждую итерацию метода filter*/
     const normalizedFilter = this.state.filter.toLowerCase();
 
     const visibleContacts = this.state.contacts.filter(contact =>
